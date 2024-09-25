@@ -1,0 +1,12 @@
+# ninja log v5
+13	385	7489072365196962	src/CMakeFiles/set.dir/tset.cpp.obj	95824035d8fde208
+3	385	7489072365196962	src/CMakeFiles/set.dir/tbitfield.cpp.obj	8062cdde6123bc68
+3	893	7489071879458028	test/CMakeFiles/test_set.dir/test_tbitfield.cpp.obj	8b5ec715ee0311fa
+21	471	7489072366067192	samples/CMakeFiles/sample_prime_numbers.dir/sample_prime_numbers.cpp.obj	9b9f4dbab0466c13
+45	1067	7489059953069028	test/CMakeFiles/test_set.dir/test_main.cpp.obj	a7f0407c29a72b66
+30	690	7489072368247677	test/CMakeFiles/test_set.dir/test_tset.cpp.obj	19fb1b0cb26412ec
+386	464	7489072365927116	lib/set.lib	146401b760a29c64
+471	682	7489072367737577	bin/sample_prime_numbers.exe	b07f6a48dedd55ae
+35	1807	7489059960424646	gtest/CMakeFiles/gtest.dir/gtest-all.cc.obj	4615afa7e6c2543e
+1809	1882	7489059961207314	lib/gtest.lib	8ecf42c62afd0ec7
+692	906	7489072369991383	bin/test_set.exe	b5c6a5b2a5d9bcc3
