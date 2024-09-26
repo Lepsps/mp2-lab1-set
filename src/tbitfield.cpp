@@ -43,7 +43,7 @@ int TBitField::GetMemIndex(const int n) const // индекс Мем для би
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
-    return 1 << (n % 32);
+    return 1 << (n % (sizeof(TELEM)*8));
 }
 
 // доступ к битам битового поля
@@ -88,20 +88,24 @@ TBitField& TBitField::operator=(const TBitField &bf) // присваивание
 
 int TBitField::operator==(const TBitField &bf) const // сравнение
 {
-    if (BitLen == bf.BitLen)
+    if (BitLen == bf.BitLen) {
         for (int i = 0; i < BitLen; i++)
             if (pMem[i] != bf.pMem[i])
                 return false;
-    return true;
+        return true;
+    }
+    return false;
 }
 
 int TBitField::operator!=(const TBitField &bf) const // сравнение
 {
-    if (BitLen == bf.BitLen)
+    if (BitLen == bf.BitLen) {
         for (int i = 0; i < BitLen; i++)
             if (pMem[i] != bf.pMem[i])
                 return true;
-    return false;
+        return false;
+    }
+    return true;
 }
 
 TBitField TBitField::operator|(const TBitField &bf) // операция "или"
@@ -153,14 +157,13 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 
 TBitField TBitField::operator~(void) // отрицание
 {
-    for (int i = 0; i < BitLen; i++)
-        pMem[i] = ~pMem[i];
-    int eb = BitLen % 32; // Количество битов, которые являются действительными в последнем элементе
-    if (eb > 0) {
-        TELEM mask = (1 << eb) - 1; // Маска для действительных битов
-        pMem[MemLen - 1] &= mask;    // Оставляем только валидные биты
+    TBitField res(BitLen);
+    for (int i = 0; i < BitLen; i++) {
+        if (GetBit(i) == 0) {
+            res.SetBit(i);
+        }
     }
-    return *this;
+    return res;
 }
 
 // ввод/вывод
