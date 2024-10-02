@@ -10,7 +10,7 @@
 TBitField::TBitField(int len): BitLen(len)
 {   
     if (len < 0) throw "Error";
-    MemLen = 32 * (BitLen+31)>>5;
+    MemLen = sizeof(TELEM)*8 * (BitLen + sizeof(TELEM) * 8 - 1) >> 5;
     pMem = new TELEM [MemLen];
     for (int i = 0; i < MemLen; i++)
     {
@@ -43,7 +43,7 @@ int TBitField::GetMemIndex(const int n) const // индекс Мем для би
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
-    return 1 << (n % (sizeof(TELEM)*8));
+    return (TELEM)1 << (n % (sizeof(TELEM)*8));
 }
 
 // доступ к битам битового поля
