@@ -30,10 +30,11 @@ TEST(TBitField, new_bitfield_is_set_to_zero)
 TEST(TBitField, can_set_bit)
 {
   TBitField bf(10);
-
+  //std::cout << bf << std::endl;
   EXPECT_EQ(0, bf.GetBit(3));
 
   bf.SetBit(3);
+  //std::cout << bf << std::endl;
   EXPECT_NE(0, bf.GetBit(3));
 }
 
@@ -298,14 +299,14 @@ TEST(TBitField, can_invert_many_random_bits_bitfield)
 
 TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 {
-  const int size = 4;
-  TBitField bf1(size), bf2(size);
+    const int size = 4;
+    TBitField bf1(size), bf2(size);
 
-  bf1.SetBit(1);
-  bf1.SetBit(3);
+    bf1.SetBit(1);
+    bf1.SetBit(3);
 
-  bf2.SetBit(1);
-  bf2.SetBit(2);
+    bf2.SetBit(1);
+    bf2.SetBit(2);
 
-  EXPECT_NE(bf1, bf2);
+    EXPECT_NE(bf1, bf2);
 }

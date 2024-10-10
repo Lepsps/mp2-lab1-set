@@ -1,5 +1,4 @@
 #include "tset.h"
-
 #include <gtest.h>
 
 TEST(TSet, can_get_max_power_set)
@@ -292,6 +291,8 @@ TEST(TSet, check_negation_operator)
   // expSet = {0, 2}
   expSet.InsElem(0);
   expSet.InsElem(2);
+  //std::cout << "feefef" << std::endl;
+ // std::cout << set << std::endl;
 
   EXPECT_EQ(expSet, set1);
 }
